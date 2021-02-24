@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List Sorter</title>
+</head>
+<body>
+    <h1>Shopping List</h1>
+    <input type="text" id="new-item" placeholder="Type your item here...">
+    <button id="add-item">Add Item</button>
+    <button id="sort">Sort</button>
+    <ul id="shopping-list"></ul>
+    
+    <script>
+        let itemsArr = []
+        let addItemBtn = document.querySelector('#add-item')
+        let shoppingList = document.querySelector("#shopping-list")
+        
+        addItemBtn.addEventListener("click", function() {
+            let newItem = document.querySelector("#new-item")
+            itemsArr.push(newItem.value)
+            shoppingList.innerHTML = shoppingList.innerHTML + "<li>" + newItem.value + "</li>"
+            newItem.value = ""
+        })
+
+        let sortBtn = document.querySelector('#sort')
+
+        sortBtn.addEventListener("click", function() {
+            shoppingList.innerHTML = ""
+            itemsArr.sort()
+            for (i = 0; i < itemsArr.length; i++) {
+                shoppingList.innerHTML = shoppingList.innerHTML + "<li>" + itemsArr[i] + "</li>"
+            }
+        })
+    </script>
+</body>
+</html>
